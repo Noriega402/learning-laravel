@@ -1,5 +1,7 @@
 @extends('layouts/principal')
+
 @section('title', $title)
+
 @section('content')
     <h2>{{ $subject }}</h2>
     <h4>Mostrando informacion de la DB</h4>
