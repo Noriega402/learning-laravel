@@ -1,7 +1,5 @@
 @extends('layouts/principal')
-
 @section('title', $title)
-
 @section('content')
     <h2>{{ $subject }}</h2>
     <h4>Mostrando informacion de la DB</h4>
@@ -21,8 +19,8 @@
                 @foreach ($collection as $item => $e)
                     <tr class="hover:bg-neutral-100">
                         <td class="text-blue-600">
-                            <a href="{{ route('employee.actualizar', $e->employee_id) }}">
-                                {{ $e->employee_id }}
+                            <a href="{{ route('employee.actualizar', $e->id) }}">
+                                {{ $e->id }}
                             </a>
                         </td>
                         <td>
@@ -35,7 +33,6 @@
                 @endforeach
             </tbody>
         </table>
-
         <div class="flex flex-col flex-wrap mt-5 mr-6 ml-6">
             {{ $collection->links() }}
         </div>
