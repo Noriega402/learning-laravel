@@ -40,14 +40,18 @@ class ControllerEmployees extends Controller
         $empleados->employee_gender = $request->gender;
         $empleados->employee_salary = $request->salary;
         $empleados->position_name = $request->position;
+        $empleados->save();
+
+        return redirect()->route('employee.index')->with('success','Employee created with success!');
     }
 
-    public function update($id){
-        $encontrar = Employee::where('employee_id', $id)->get();
+    public function actualizar($id){
+        $encontrar = Employee::where('id', $id)->get();
+        $departaments = Departament::all();
         $parametros = [
             'title' => 'Actualizar datos empleado',
-            // 'id' => $id
             'empleado' => $encontrar,
+            'collection' => $departaments,
         ];
         // return $encontrar;
         return view('updateEmployee', $parametros); //pasando parametros a la vista
@@ -66,5 +70,10 @@ class ControllerEmployees extends Controller
 
     public function search($nombre){
         return "buscando empleados con nombre $nombre";
+    }
+
+    public function update(){
+
+        return redirect()->route('employee.update')->with('updated','Employee data updated!');
     }
 }

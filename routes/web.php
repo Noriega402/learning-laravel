@@ -44,7 +44,7 @@ Route::get('curses/{curse}/{category}/', function ($curse,$category) {
 //     return view('index');
 // });
 
-Route::get('/', ControllerEmployees::class);
+// Route::get('/', ControllerEmployees::class);
 
 // Route::get('crear', [ControllerEmployees::class, 'create']);
 // Route::get('insertar/{employee}', [ControllerEmployees::class, 'insert']); //{employee} desde controlador de funcion insert
@@ -55,11 +55,13 @@ Route::get('/', ControllerEmployees::class);
 //ROUTE-GROUPS
 // para poder agrupar todas las rutas de una misma URL o que usen el mismo controlador
 Route::controller(ControllerEmployees::class)->group(function(){
+    Route::get('/', '__invoke')->name('employee.index');
     Route::get('crear','create')->name('employee.crear');
-    // Route::get('insertar/{employee}', 'insert')->name('employee.insertar');
-    Route::get('actualizar/{id}', 'update')->name('employee.actualizar');
+    Route::get('insertar/{employee}', 'insert')->name('employee.insertar');
+    Route::get('actualizar/{id}', 'actualizar')->name('employee.actualizar');
     Route::get('borrar/{id}', 'delete')->name('employee.borrar');
     Route::get('buscar/{nombre}', 'search')->name('employee.buscar');
 
     Route::post('crear','insert')->name('employee.insert');
+    Route::put('actualizar/{id}')->name('employee.update');
 });
