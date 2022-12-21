@@ -14,6 +14,15 @@
                 data-bs-dismiss="alert" aria-label="Close">X</button>
         </div>
     @endif
+    @if ($message = Session::get('updated'))
+    <div class="alert alert-dismissible fade show mb-3 inline-flex w-2/5 items-center rounded-lg bg-blue-100 py-5 px-6 text-base text-blue-700"
+    role="alert">
+    <strong class="mr-1">{{ $message }}</strong>
+    <button type="button"
+        class="btn-close ml-auto box-content h-4 w-4 rounded-none border-none p-1 text-blue-900 opacity-50 hover:text-blue-900 hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none"
+        data-bs-dismiss="alert" aria-label="Close">X</button>
+</div>
+    @endif
     <div class="mt-8 ml-6 font-bold">
         <a href="{{ route('employee.crear') }}" class="rounded-md bg-sky-600 pr-5 pl-5 pt-3 pb-3 text-white">NEW
             EMPLOYEE</a>

@@ -63,5 +63,5 @@ Route::controller(ControllerEmployees::class)->group(function(){
     Route::get('buscar/{nombre}', 'search')->name('employee.buscar');
 
     Route::post('crear','insert')->name('employee.insert');
-    Route::put('actualizar/{id}')->name('employee.update');
+    Route::put('actualizar/{id}', 'update')->name('employee.update');
 });

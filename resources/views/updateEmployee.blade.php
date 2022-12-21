@@ -2,12 +2,14 @@
 @section('title', $title)
 @section('content')
     <h1 class="font-semibold">Actualizando empleado</h1>
-    {{-- <h1>Vista para actualizar datos de un empleado</h1>
+    <h1>Vista para actualizar datos de un empleado</h1>
     <h4>Actualizando empleado con id {{ $empleado[0]->id }}</h4>
-    <h3>Nombre completo de empleado: {{ $empleado[0]->employee_name }} {{ $empleado[0]->employee_surname }}</h3> --}}
+    <h3>Nombre completo de empleado: {{ $empleado[0]->employee_name }} {{ $empleado[0]->employee_surname }}</h3>
 
     <div class="flex justify-center">
-        <form action="{{ route('employee.update') }}" method="POST">
+        <form action="{{ route('employee.update', $empleado[0]->id ) }}" method="POST">
+            @csrf
+            @method('put')
             <div>
                 <div class="form-floating mb-3 xl:w-96">
                     <label for="floatingInput" class="text-gray-700">Name</label>
@@ -31,7 +33,7 @@
                     <div class="mb-3 xl:w-96">
                         <label for="departament" class="block">
                             <span class="block text-sm font-medium text-slate-700">Gender</span>
-                            <select name="departament" id="departament"
+                            <select name="gender" id="gender"
                                 class="mt-1 block rounded-md border border-slate-300 bg-white px-3 py-2 text-sm placeholder-slate-400 shadow-sm invalid:border-pink-500 invalid:text-pink-600 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:invalid:border-pink-500 focus:invalid:ring-pink-500 disabled:border-slate-200 disabled:bg-slate-50 disabled:text-slate-500 disabled:shadow-none">
                                 <option selected>Select an option</option>
                                 <option value="0">Male</option>
