@@ -33,6 +33,16 @@ class ControllerEmployees extends Controller
 
     public function insert(Request $request){
         // return $request->all();
+        $request->validate([
+            'name' => 'required',
+            'surname' => 'required',
+            'birthday' => 'required|date',
+            'gender' => 'required|numeric',
+            'salary' => 'required|decimal',
+            'position' => 'required|alpha_num',
+            'departament' => 'required|numeric',
+        ]);
+
         $empleados = new Employee();
         $empleados->employee_name = $request->name;
         $empleados->employee_surname = $request->surname;
