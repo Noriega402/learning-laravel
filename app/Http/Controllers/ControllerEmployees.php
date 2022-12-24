@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Employee;
 use App\Models\Departament;
 use Illuminate\Http\Request;
+use App\Http\Requests\InsertEmployee; //REGLAS DE VALIDACION DE FORMULARIOs
 
 class ControllerEmployees extends Controller
 {
@@ -31,18 +32,7 @@ class ControllerEmployees extends Controller
         return view('createEmployee', $parametros);
     }
 
-    public function insert(Request $request){
-        // return $request->all();
-        $request->validate([
-            'name' => 'required',
-            'surname' => 'required',
-            'birthday' => 'required|date',
-            'gender' => 'required|numeric',
-            'salary' => 'required|decimal',
-            'position' => 'required|alpha_num',
-            'departament' => 'required|numeric',
-        ]);
-
+    public function insert(InsertEmployee $request){
         $empleados = new Employee();
         $empleados->employee_name = $request->name;
         $empleados->employee_surname = $request->surname;
