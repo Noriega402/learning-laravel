@@ -34,7 +34,7 @@ class InsertEmployee extends FormRequest
         ];
     }
 
-    public function attributes()
+    public function attributes() // para modificar el nombre de los campos
     {
         return[
             'name' => 'nombre de empleado',
@@ -44,6 +44,23 @@ class InsertEmployee extends FormRequest
             'salary' => 'salario',
             'position' => 'puesto en la empresa',
             'departament' => 'departamento',
+        ];
+    }
+
+    public function messages() // para mensajes personalizados en los inputs
+    {
+        return[
+            'name.required' => 'Debe ingresar el nombre del empleado',
+            'surname.required' => 'Debe ingresar el apellido del empleado',
+            'birthday.required' => 'Debe ingresar fecha de nacimiento',
+            'birthday.date' => 'Debe ser una fecha valida',
+            'gender.required' => 'Debe seleccionar un genero',
+            'gender.numeric' => 'Genero no valido',
+            'salary.required' => 'Debe ingresar un monto',
+            'salary.numeric' => 'Debe ser un numero',
+            'position.required' => 'Debe ingresar el nombre del puesto',
+            'departament.required' => 'Debe seleccionar un departamento',
+            'departament.numeric' => 'Departamento no valido',
         ];
     }
 }
