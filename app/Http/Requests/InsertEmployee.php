@@ -33,4 +33,17 @@ class InsertEmployee extends FormRequest
             'departament' => 'required|numeric',
         ];
     }
+
+    public function attributes()
+    {
+        return[
+            'name' => 'nombre de empleado',
+            'surname' => 'apellido de empleado',
+            'birthday' => 'año de nacimiento',
+            'gender' => 'genero',
+            'salary' => 'salario',
+            'position' => 'puesto en la empresa',
+            'departament' => 'departamento',
+        ];
+    }
 }
