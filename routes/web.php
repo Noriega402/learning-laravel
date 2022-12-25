@@ -62,6 +62,7 @@ Route::controller(ControllerEmployees::class)->group(function(){
     Route::get('borrar/{id}', 'delete')->name('employee.borrar');
     Route::get('buscar/{nombre}', 'search')->name('employee.buscar');
 
-    Route::post('crear','insert')->name('employee.insert');
-    Route::put('actualizar/{id}', 'update')->name('employee.update');
+    Route::post('crear','insert')->name('employee.insert'); // insertar
+    Route::put('actualizar/{id}', 'update')->name('employee.update'); //actualizar
+    Route::delete('borrar/{id}', 'destroy')->name('employee.delete');// eliminar
 });

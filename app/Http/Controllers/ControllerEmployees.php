@@ -33,15 +33,6 @@ class ControllerEmployees extends Controller
     }
 
     public function insert(InsertEmployee $request){
-        // $empleados = new Employee();
-        // $empleados->employee_name = $request->name;
-        // $empleados->employee_surname = $request->surname;
-        // $empleados->employee_birthday = $request->birthday;
-        // $empleados->employee_gender = $request->gender;
-        // $empleados->employee_salary = $request->salary;
-        // $empleados->position_name = $request->position;
-        // $empleados->save();
-
         // return $request->all();
         $employees = Employee::create($request->all());
         return redirect()->route('employee.index')->with('success','Employee created with success!');
@@ -59,15 +50,12 @@ class ControllerEmployees extends Controller
         return view('updateEmployee', $parametros); //pasando parametros a la vista
     }
 
-    public function delete($id){
-        // $encontrar = Employee::find($id);
-        $parametros = [
-            'title' => 'Borrar Empleado',
-            // 'id' => $id
-            // 'empleado' => $encontrar,
-        ];
+    public function destroy(Employee $request, $id){
+        // return $search;
+        $search = Employee::find($id);
+        $search->delete();
 
-        return view('deleteEmployee', $parametros); //pasando parametros a la vista
+        return redirect()->route('employee.index')->with('deleted', 'Employee deleted with success!'); //pasando parametros a la vista
     }
 
     public function search($nombre){
