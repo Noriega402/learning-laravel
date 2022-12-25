@@ -37,8 +37,8 @@
             EMPLOYEE</a>
     </div>
     <div class="flex flex-col justify-center text-center">
-        <table class="m-6 table-auto md:table-fixed">
-            <thead class="bg-blue-900 font-semibold text-white">
+        <table class="m-6 table-auto md:table-fixed table-collapse border-sapacing-3">
+            <thead class="bg-slate-900 font-semibold text-white">
                 <tr>
                     <td>ID</td>
                     <td>NAME</td>
@@ -46,11 +46,11 @@
                     <td>ACTIONS</td>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="bg-slate-700 text-white">
                 @foreach ($collection as $item => $e)
-                    <tr class="hover:bg-neutral-100">
+                    <tr class="hover:bg-slate-500">
                         <td class="text-blue-600">
-                            <a href="{{ route('employee.actualizar', $e->id) }}">
+                            <a href="{{ route('employee.actualizar', $e->id) }}" class="text-white font-bold">
                                 {{ $e->id }}
                             </a>
                         </td>
@@ -61,7 +61,6 @@
                             {{ $e->employee_surname }}
                         </td>
                         <td>
-                            {{-- {{$e->id}} --}}
                             <form action="{{ route('employee.delete', $e->id) }}" method="POST">
                                 @csrf
                                 @method('delete')
@@ -77,9 +76,4 @@
             {{ $collection->links() }}
         </div>
     </div>
-    <script>
-        function modal() {
-
-        }
-    </script>
 @endsection

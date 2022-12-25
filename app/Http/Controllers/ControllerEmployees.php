@@ -46,12 +46,10 @@ class ControllerEmployees extends Controller
             'empleado' => $search,
             'collection' => $departaments,
         ];
-        // // return $parametros;
         return view('updateEmployee', $parametros); //pasando parametros a la vista
     }
 
-    public function destroy(Employee $request, $id){
-        // return $search;
+    public function destroy($id){
         $search = Employee::find($id);
         $search->delete();
 
@@ -72,8 +70,6 @@ class ControllerEmployees extends Controller
         $employee->position_name = $request->position;
         $employee->departament_id = $request->departament;
         $employee->save();
-        // return $employee;
-        // return $request->all();
 
         return redirect()->route('employee.index')->with('updated','Employee updated!');
     }
