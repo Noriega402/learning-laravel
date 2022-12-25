@@ -9,7 +9,15 @@ class Employee extends Model
 {
     use HasFactory;
 
-    // public function employees(){
-    //     return $this->hasMany('App\Models\Departament');
-    // }
+    protected $fillable = [
+        'employee_name',
+        'employee_surname',
+        'employee_birthday',
+        'employee_gender',
+        'employee_salary',
+        'position_name',
+        'departament_id',
+    ];
+
+    protected $guarded = ['token', 'created_at', 'updated_at'];
 }

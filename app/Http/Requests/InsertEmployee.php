@@ -24,43 +24,43 @@ class InsertEmployee extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
-            'surname' => 'required',
-            'birthday' => 'required|date',
-            'gender' => 'required|numeric',
-            'salary' => 'required|numeric',
-            'position' => 'required',
-            'departament' => 'required|numeric',
+            'employee_name' => 'required',
+            'employee_surname' => 'required',
+            'employee_birthday' => 'required|date',
+            'employee_gender' => 'required|numeric',
+            'employee_salary' => 'required|numeric',
+            'position_name' => 'required',
+            'departament_id' => 'required|numeric',
         ];
     }
 
     public function attributes() // para modificar el nombre de los campos
     {
         return[
-            'name' => 'nombre de empleado',
-            'surname' => 'apellido de empleado',
-            'birthday' => 'año de nacimiento',
-            'gender' => 'genero',
-            'salary' => 'salario',
-            'position' => 'puesto en la empresa',
-            'departament' => 'departamento',
+            'employee_name' => 'nombre de empleado',
+            'employee_surname' => 'apellido de empleado',
+            'employee_birthday' => 'año de nacimiento',
+            'employee_gender' => 'genero',
+            'employee_salary' => 'salario',
+            'position_name' => 'puesto en la empresa',
+            'departament_id' => 'departamento',
         ];
     }
 
     public function messages() // para mensajes personalizados en los inputs
     {
         return[
-            'name.required' => 'Debe ingresar el nombre del empleado',
-            'surname.required' => 'Debe ingresar el apellido del empleado',
-            'birthday.required' => 'Debe ingresar fecha de nacimiento',
-            'birthday.date' => 'Debe ser una fecha valida',
-            'gender.required' => 'Debe seleccionar un genero',
-            'gender.numeric' => 'Genero no valido',
-            'salary.required' => 'Debe ingresar un monto',
-            'salary.numeric' => 'Debe ser un numero',
-            'position.required' => 'Debe ingresar el nombre del puesto',
-            'departament.required' => 'Debe seleccionar un departamento',
-            'departament.numeric' => 'Departamento no valido',
+            'employee_name.required' => 'Debe ingresar el nombre del empleado',
+            'employee_surname.required' => 'Debe ingresar el apellido del empleado',
+            'employee_birthday.required' => 'Debe ingresar fecha de nacimiento',
+            'employee_birthday.date' => 'Debe ser una fecha valida',
+            'employee_gender.required' => 'Debe seleccionar un genero',
+            'employee_gender.numeric' => 'Genero no valido',
+            'employee_salary.required' => 'Debe ingresar un monto',
+            'employee_salary.numeric' => 'Debe ser un numero',
+            'position_name.required' => 'Debe ingresar el nombre del puesto',
+            'departament_id.required' => 'Debe seleccionar un departamento',
+            'departament_id.numeric' => 'Departamento no valido',
         ];
     }
 }

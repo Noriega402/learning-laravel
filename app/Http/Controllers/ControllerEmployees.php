@@ -33,15 +33,17 @@ class ControllerEmployees extends Controller
     }
 
     public function insert(InsertEmployee $request){
-        $empleados = new Employee();
-        $empleados->employee_name = $request->name;
-        $empleados->employee_surname = $request->surname;
-        $empleados->employee_birthday = $request->birthday;
-        $empleados->employee_gender = $request->gender;
-        $empleados->employee_salary = $request->salary;
-        $empleados->position_name = $request->position;
-        $empleados->save();
+        // $empleados = new Employee();
+        // $empleados->employee_name = $request->name;
+        // $empleados->employee_surname = $request->surname;
+        // $empleados->employee_birthday = $request->birthday;
+        // $empleados->employee_gender = $request->gender;
+        // $empleados->employee_salary = $request->salary;
+        // $empleados->position_name = $request->position;
+        // $empleados->save();
 
+        // return $request->all();
+        $employees = Employee::create($request->all());
         return redirect()->route('employee.index')->with('success','Employee created with success!');
     }
 

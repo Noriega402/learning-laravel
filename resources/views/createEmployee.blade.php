@@ -7,10 +7,10 @@
             @csrf
             <label for="name" class="block">
                 <span class="block text-sm font-medium text-slate-700">Name</span>
-                <input type="text" placeholder="Daniel" id="name" name="name" value="{{ old('name') }}"
+                <input type="text" placeholder="Daniel" id="name" name="employee_name" value="{{ old('employee_name') }}"
                     class="mt-1 block w-80 rounded-md border border-slate-300 bg-white px-3 py-2 text-sm placeholder-slate-400 shadow-sm invalid:border-pink-500 invalid:text-pink-600 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:invalid:border-pink-500 focus:invalid:ring-pink-500 disabled:border-slate-200 disabled:bg-slate-50 disabled:text-slate-500 disabled:shadow-none" />
                 {{-- MENSAJE DE ERROR  --}}
-                @error('name')
+                @error('employee_name')
                     <div class="inline-flex items-center rounded-lg py-1 px-2 text-base text-red-600" role="alert">
                         <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="times-circle"
                             class="mr-2 h-4 w-4 fill-current" role="img" xmlns="http://www.w3.org/2000/svg"
@@ -25,10 +25,10 @@
             </label>
             <label for="surname" class="block">
                 <span class="block text-sm font-medium text-slate-700">Surname</span>
-                <input type="text" placeholder="Noriega" id="surname" name="surname" value="{{ old('surname') }}"
+                <input type="text" placeholder="Noriega" id="surname" name="employee_surname" value="{{ old('employee_surname') }}"
                     class="mt-1 block w-80 rounded-md border border-slate-300 bg-white px-3 py-2 text-sm placeholder-slate-400 shadow-sm invalid:border-pink-500 invalid:text-pink-600 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:invalid:border-pink-500 focus:invalid:ring-pink-500 disabled:border-slate-200 disabled:bg-slate-50 disabled:text-slate-500 disabled:shadow-none" />
                 {{-- MENSAJE DE ERROR  --}}
-                @error('surname')
+                @error('employee_surname')
                     <div class="inline-flex items-center rounded-lg py-1 px-2 text-base text-red-600" role="alert">
                         <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="times-circle"
                             class="mr-2 h-4 w-4 fill-current" role="img" xmlns="http://www.w3.org/2000/svg"
@@ -43,10 +43,10 @@
             </label>
             <label for="birthday" class="block">
                 <span class="block text-sm font-medium text-slate-700">Birthday</span>
-                <input type="date" id="birthday" name="birthday" value="{{ old('birthday') }}"
+                <input type="date" id="birthday" name="employee_birthday" value="{{ old('employee_birthday') }}"
                     class="mt-1 block w-80 rounded-md border border-slate-300 bg-white px-3 py-2 text-sm placeholder-slate-400 shadow-sm invalid:border-pink-500 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:invalid:border-pink-500 focus:invalid:ring-pink-500 disabled:border-slate-200 disabled:bg-slate-50 disabled:text-slate-500 disabled:shadow-none" />
                 {{-- MENSAJE DE ERROR  --}}
-                @error('birthday')
+                @error('employee_birthday')
                     <div class="inline-flex items-center rounded-lg py-1 px-2 text-base text-red-600" role="alert">
                         <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="times-circle"
                             class="mr-2 h-4 w-4 fill-current" role="img" xmlns="http://www.w3.org/2000/svg"
@@ -61,13 +61,13 @@
             </label>
             <label for="gender" class="block">
                 <span class="block text-sm font-medium text-slate-700">Gender</span>
-                <select name="gender" id="gender"
+                <select name="employee_gender" id="gender"
                     class="mt-1 block w-80 rounded-md border border-slate-300 bg-white px-3 py-2 text-sm placeholder-slate-400 shadow-sm invalid:border-pink-500 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:invalid:border-pink-500 focus:invalid:ring-pink-500 disabled:border-slate-200 disabled:bg-slate-50 disabled:text-slate-500 disabled:shadow-none">
                     <option selected>Select an option</option>
                     <option value="0">Male</option>
                     <option value="1">Female</option>
                     {{-- MENSAJE DE ERROR  --}}
-                    @error('gender')
+                    @error('employee_gender')
                         <div class="inline-flex items-center rounded-lg py-1 px-2 text-base text-red-600" role="alert">
                             <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="times-circle"
                                 class="mr-2 h-4 w-4 fill-current" role="img" xmlns="http://www.w3.org/2000/svg"
@@ -83,9 +83,9 @@
             </label>
             <label for="salary" class="block">
                 <span class="block text-sm font-medium text-slate-700">Salary</span>
-                <input type="number" id="salary" placeholder="10000" name="salary" value="{{ old('salary') }}"
+                <input type="number" id="salary" placeholder="10000" name="employee_salary" value="{{ old('employee_salary') }}"
                     class="mt-1 block w-80 rounded-md border border-slate-300 bg-white px-3 py-2 text-sm placeholder-slate-400 shadow-sm invalid:border-pink-500 invalid:text-pink-600 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:invalid:border-pink-500 focus:invalid:ring-pink-500 disabled:border-slate-200 disabled:bg-slate-50 disabled:text-slate-500 disabled:shadow-none" />
-                @error('salary')
+                @error('employee_salary')
                     <div class="inline-flex items-center rounded-lg py-1 px-2 text-base text-red-600" role="alert">
                         <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="times-circle"
                             class="mr-2 h-4 w-4 fill-current" role="img" xmlns="http://www.w3.org/2000/svg"
@@ -100,11 +100,11 @@
             </label>
             <label for="position" class="block">
                 <span class="block text-sm font-medium text-slate-700">Position</span>
-                <input type="text" placeholder="Marketing" id="position" name="position"
-                    value="{{ old('position') }}"
+                <input type="text" placeholder="Marketing" id="position" name="position_name"
+                    value="{{ old('position_name') }}"
                     class="mt-1 block w-80 rounded-md border border-slate-300 bg-white px-3 py-2 text-sm placeholder-slate-400 shadow-sm invalid:border-pink-500 invalid:text-pink-600 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:invalid:border-pink-500 focus:invalid:ring-pink-500 disabled:border-slate-200 disabled:bg-slate-50 disabled:text-slate-500 disabled:shadow-none" />
                 {{-- MENSAJE DE ERROR  --}}
-                @error('position')
+                @error('position_name')
                     <div class="inline-flex items-center rounded-lg py-1 px-2 text-base text-red-600" role="alert">
                         <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="times-circle"
                             class="mr-2 h-4 w-4 fill-current" role="img" xmlns="http://www.w3.org/2000/svg"
@@ -119,7 +119,7 @@
             </label>
             <label for="departament" class="block">
                 <span class="block text-sm font-medium text-slate-700">Departament</span>
-                <select name="departament" id="departament"
+                <select name="departament_id" id="departament"
                     class="mt-1 block w-80 rounded-md border border-slate-300 bg-white px-3 py-2 text-sm placeholder-slate-400 shadow-sm invalid:border-pink-500 invalid:text-pink-600 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:invalid:border-pink-500 focus:invalid:ring-pink-500 disabled:border-slate-200 disabled:bg-slate-50 disabled:text-slate-500 disabled:shadow-none">
                     <option selected>Select an option</option>
                     @foreach ($collection as $item => $d)
@@ -127,7 +127,7 @@
                     @endforeach
                 </select>
                 {{-- MENSAJE DE ERROR  --}}
-                @error('departament')
+                @error('departament_id')
                     <div class="inline-flex items-center rounded-lg py-1 px-2 text-base text-red-600" role="alert">
                         <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="times-circle"
                             class="mr-2 h-4 w-4 fill-current" role="img" xmlns="http://www.w3.org/2000/svg"
