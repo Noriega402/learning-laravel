@@ -65,16 +65,12 @@ class ControllerEmployees extends Controller
         return "buscando empleados con nombre $nombre";
     }
 
-    public function update(Request $request, $id){
-        $employee = Employee::find($id);
-        $employee->employee_name = $request->name;
-        $employee->employee_surname = $request->surname;
-        $employee->employee_birthday = $request->birthday;
-        $employee->employee_gender = $request->gender;
-        $employee->employee_salary = $request->salary;
-        $employee->position_name = $request->position;
-        $employee->departament_id = $request->departament;
-        $employee->save();
+    public function update(Request $request, Employee $employee){
+        $fullname = $request->employee_name.' '.$request->employee_surname;
+        $slug = Str::slug($fullname,'-');
+        $request['slug'] = $slug; //agregar un elemento al array
+        // return $request->all();
+        $employee->update($request->all());
 
         return redirect()->route('employee.index')->with('updated','Employee updated!');
     }
