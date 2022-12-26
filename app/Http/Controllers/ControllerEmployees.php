@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Employee;
 use App\Models\Departament;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use App\Http\Requests\InsertEmployee; //REGLAS DE VALIDACION DE FORMULARIOs
 
 class ControllerEmployees extends Controller
@@ -33,14 +34,18 @@ class ControllerEmployees extends Controller
     }
 
     public function insert(InsertEmployee $request){
+        $fullname = $request->employee_name.' '.$request->employee_surname;
+        $slug = Str::slug($fullname,'-');
+        $request['slug'] = $slug; //agregar un elemento al array
         // return $request->all();
         $employees = Employee::create($request->all());
         return redirect()->route('employee.index')->with('success','Employee created with success!');
     }
 
-    public function actualizar($id){
-        $search = Employee::find($id);
-        $departaments = Departament::all();
+    public function actualizar($slug){
+        $search = Employee::where('slug','=',$slug)->get();
+        // return $search;
+        $departaments = Departament::all(); // traer todos los departamentos
         $parametros = [
             'title' => 'Actualizar datos empleado',
             'empleado' => $search,

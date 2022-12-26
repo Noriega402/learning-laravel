@@ -50,7 +50,7 @@
                 @foreach ($collection as $item => $e)
                     <tr class="hover:bg-slate-500">
                         <td class="text-blue-600">
-                            <a href="{{ route('employee.actualizar', $e->id) }}" class="text-white font-bold">
+                            <a href="{{ route('employee.actualizar', $e) }}" class="text-white font-bold">
                                 {{ $e->id }}
                             </a>
                         </td>

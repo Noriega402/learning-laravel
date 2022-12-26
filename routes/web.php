@@ -22,23 +22,6 @@ use function Ramsey\Uuid\v1;
 //     return view('welcome');
 // });
 
-
-// ------------------------------------
-// probando rutas desde laravel
-Route::get('cursos/{curso}', function ($curso){
-    return "Estas en el curso de $curso";
-});
-
-Route::get('matematicas/{tema}',function($tema){
-    return "Matematicas: <code>$tema</code>";
-});
-
-Route::get('curses/{curse}/{category}/', function ($curse,$category) {
-    return "This is curse of <strong>$curse</strong> into the category <strong>$category</strong>";
-});
-// ------------------------------------
-
-
 // proyecto formal
 // Route::get('/', function () {
 //     return view('index');
@@ -58,7 +41,7 @@ Route::controller(ControllerEmployees::class)->group(function(){
     Route::get('/', '__invoke')->name('employee.index');
     Route::get('crear','create')->name('employee.crear');
     Route::get('insertar/{employee}', 'insert')->name('employee.insertar');
-    Route::get('actualizar/{id}', 'actualizar')->name('employee.actualizar');
+    Route::get('actualizar/{slug}', 'actualizar')->name('employee.actualizar');
     Route::get('borrar/{id}', 'delete')->name('employee.borrar');
     Route::get('buscar/{nombre}', 'search')->name('employee.buscar');
 

@@ -22,6 +22,7 @@ return new class extends Migration
             $table->double('employee_salary',8,2);
             $table->string('position_name');
             $table->integer('departament_id')->nullable();
+            $table->string('slug');
             $table->foreign('departament_id')
                     ->references('id')
                     ->on('departaments')

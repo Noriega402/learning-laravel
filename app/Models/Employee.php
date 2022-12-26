@@ -17,7 +17,13 @@ class Employee extends Model
         'employee_salary',
         'position_name',
         'departament_id',
+        'slug',
     ];
 
-    protected $guarded = ['token', 'created_at', 'updated_at'];
+    protected $guarded = ['token', 'created_at', 'updated_at',];
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 }
