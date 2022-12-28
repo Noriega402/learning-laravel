@@ -1,11 +1,9 @@
 <?php
 
-use Illuminate\Routing\Route as RoutingRoute;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ControllerEmployees;
-use Illuminate\Routing\RouteGroup;
-
-use function Ramsey\Uuid\v1;
+use App\Http\Controllers\ProfileController;
+use App\Models\Employee;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,34 +16,47 @@ use function Ramsey\Uuid\v1;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
-// proyecto formal
-// Route::get('/', function () {
-//     return view('index');
-// });
-
-// Route::get('/', ControllerEmployees::class);
-
-// Route::get('crear', [ControllerEmployees::class, 'create']);
-// Route::get('insertar/{employee}', [ControllerEmployees::class, 'insert']); //{employee} desde controlador de funcion insert
-// Route::get('actualizar/{id}', [ControllerEmployees::class, 'update']); //{id} desde controlador de funcion update
-// Route::get('borrar/{id}', [ControllerEmployees::class, 'delete']); // {id} desde controlador de funcion delete
-// Route::get('buscar/{nombre}', [ControllerEmployees::class, 'search']);// {nombre} desde controlador de funcion search
-
-//ROUTE-GROUPS
-// para poder agrupar todas las rutas de una misma URL o que usen el mismo controlador
-Route::controller(ControllerEmployees::class)->group(function(){
-    Route::get('/', '__invoke')->name('employee.index');
-    Route::get('crear','create')->name('employee.crear');
-    Route::get('insertar/{employee}', 'insert')->name('employee.insertar');
-    Route::get('actualizar/{slug}', 'actualizar')->name('employee.actualizar');
-    Route::get('borrar/{id}', 'delete')->name('employee.borrar');
-    Route::get('buscar/{nombre}', 'search')->name('employee.buscar');
-
-    Route::post('crear','insert')->name('employee.insert'); // insertar
-    Route::put('actualizar/{id}', 'update')->name('employee.update'); //actualizar
-    Route::delete('borrar/{id}', 'destroy')->name('employee.delete');// eliminar
+Route::get('/', function () {
+    return view('welcome');
 });
+
+// Route::get('/dashboard', function () {
+    // return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware(['auth','verified'])->group(function () {
+    Route::get('dashboard',[ControllerEmployees::class, '__invoke'])
+    ->name('dashboard');
+
+    Route::get('crear',[ControllerEmployees::class,'create'])
+    ->name('employee.crear');
+
+    Route::get('insertar/{employee}',[ControllerEmployees::class, 'insert'])
+    ->name('employee.insertar');
+
+    Route::get('actualizar/{slug}',[ControllerEmployees::class,'actualizar'])
+    ->name('employee.actualizar');
+
+    Route::get('borrar/{id}',[ControllerEmployees::class, 'delete'])
+    ->name('employee.borrar');
+
+    Route::get('buscar/{nombre}', [ControllerEmployees::class, 'search'])
+    ->name('employee.buscar');
+
+    Route::post('crear',[ControllerEmployees::class, 'insert'])
+    ->name('employee.insert'); // insertar
+
+    Route::put('actualizar/{id}', [ControllerEmployees::class, 'update'])
+    ->name('employee.update'); //actualizar
+
+    Route::delete('borrar/{id}', [ControllerEmployees::class, 'destroy'])
+    ->name('employee.delete');// eliminar
+});
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';

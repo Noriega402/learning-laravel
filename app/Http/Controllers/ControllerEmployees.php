@@ -13,15 +13,9 @@ class ControllerEmployees extends Controller
     //
     public function __invoke(){
         // $results = Employee::all();
-        $results = Employee::paginate(); // la diferencia es que este muestra 15 registros
+        $collection= Employee::paginate(); // la diferencia es que este muestra 15 registros
 
-        $parametros =
-        [
-            'title' => 'Practicas Laravel',
-            'subject' => 'Practicando manejo de rutas, controladores y vistas desde laravel 9',
-            'collection' => $results
-        ];
-        return view('index',$parametros);
+        return view('index',compact('collection'));
     }
 
     public function create(){
@@ -39,7 +33,7 @@ class ControllerEmployees extends Controller
         $request['slug'] = $slug; //agregar un elemento al array
         // return $request->all();
         $employees = Employee::create($request->all());
-        return redirect()->route('employee.index')->with('success','Employee created with success!');
+        return redirect()->route('dashboard')->with('success','Employee created with success!');
     }
 
     public function actualizar($slug){
@@ -58,7 +52,7 @@ class ControllerEmployees extends Controller
         $search = Employee::find($id);
         $search->delete();
 
-        return redirect()->route('employee.index')->with('deleted', 'Employee deleted with success!'); //pasando parametros a la vista
+        return redirect()->route('dashboard')->with('deleted', 'Employee deleted with success!'); //pasando parametros a la vista
     }
 
     public function search($nombre){
@@ -72,6 +66,6 @@ class ControllerEmployees extends Controller
         // return $request->all();
         $employee->update($request->all());
 
-        return redirect()->route('employee.index')->with('updated','Employee updated!');
+        return redirect()->route('dashboard')->with('updated','Employee updated!');
     }
 }
